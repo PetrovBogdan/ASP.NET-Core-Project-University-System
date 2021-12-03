@@ -8,6 +8,8 @@ namespace UniversitySystem
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using UniversitySystem.Data;
+    using UniversitySystem.Services.Faculties;
+    using UniversitySystem.Services.Students;
 
     public class Startup
     {
@@ -20,7 +22,7 @@ namespace UniversitySystem
         {
             services
                 .AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services
                 .AddDatabaseDeveloperPageExceptionFilter();
@@ -36,6 +38,10 @@ namespace UniversitySystem
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<IFacultyService, FacultyService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

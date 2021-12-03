@@ -1,0 +1,32 @@
+﻿@model List<FacultyServiceModel>
+
+@{
+    ViewBag.Title = "Choose Faculty";
+}
+
+<div class="mb-4"></div>
+<h4 class="text-center font-italic">Faculties</h4>
+<div class="container">
+    <div class="row text-center">
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (var faculty in Model)
+                    {
+                        <td >
+                            <a asp-controller="Students" asp-action="Create" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
+                        </td>
+
+                    }
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

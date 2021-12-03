@@ -5,7 +5,7 @@
 
     public interface IFacultyService
     {
-        public ICollection<FacultyServiceModel> GetAll();
+        public ICollection<FacultyServiceModel> GetAll(string typeCreating);
 
     }
 }

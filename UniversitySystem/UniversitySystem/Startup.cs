@@ -10,6 +10,7 @@ namespace UniversitySystem
     using UniversitySystem.Data;
     using UniversitySystem.Services.Faculties;
     using UniversitySystem.Services.Students;
+    using UniversitySystem.Services.Teachers;
 
     public class Startup
     {
@@ -41,6 +42,8 @@ namespace UniversitySystem
 
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IFacultyService, FacultyService>();
+            services.AddTransient<ITeacherService, TeacherService>();
+
 
         }
 

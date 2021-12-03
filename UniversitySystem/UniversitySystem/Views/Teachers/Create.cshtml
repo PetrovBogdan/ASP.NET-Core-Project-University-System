@@ -1,14 +1,14 @@
-﻿@model StudentFormModel
+﻿@model TeacherFormModel
 
 @{
-    ViewBag.Title = "Register Student";
+    ViewBag.Title = "Hire Teacher";
 }
 
 <div class="container">
     <div class="row">
         <div class=" col-md-6 col-sm-12 offset-md-2">
             <form method="post">
-                <h2 class="text-center p-3">Register student</h2>
+                <h2 class="text-center p-3">Hire Teacher</h2>
                 <div class="form-group">
                     <label asp-for="FirstName"></label>
                     <input asp-for="FirstName" class="form-control">
@@ -20,14 +20,14 @@
                     <span asp-validation-for="LastName" class="small text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CourseId">Choose courses:</label>
-                    <select asp-for="CourseId" class="form-control" multiple>
-                        @foreach (var course in Model.Courses)
+                    <label id="TitleId">Chosse title:</label>
+                    <select id="TitleId" name="TitleId" class="form-control">
+                        @foreach (var title in Model.Titles)
                         {
-                            <option value="@course.Id">@course.Name</option>
+                            <option value="@title.Id">@title.Name</option>
                         }
                     </select>
-                    <span asp-validation-for="CourseId" class="small text-danger mt-2"></span>
+                    <span asp-validation-for="TitleId" class="small text-danger mt-2"></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

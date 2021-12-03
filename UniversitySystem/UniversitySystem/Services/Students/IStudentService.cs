@@ -10,7 +10,7 @@
             int facultyId,
             ICollection<int?> courses);
 
-        public ICollection<CourseServiceModel> GetCourses();
+        public ICollection<CourseServiceModel> GetCourses(int facultyId);
 
     }
 }

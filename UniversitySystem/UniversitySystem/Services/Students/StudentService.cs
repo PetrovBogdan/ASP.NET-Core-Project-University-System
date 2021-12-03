@@ -36,13 +36,13 @@
             }
         }
 
-        public ICollection<CourseServiceModel> GetCourses()
+        public ICollection<CourseServiceModel> GetCourses(int facultyId)
         {
             var courses = new List<CourseServiceModel>();
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-                SqlCommand cmd = new SqlCommand("SELECT Id, Name FROM Courses");
+                SqlCommand cmd = new SqlCommand($"SELECT Id, Name FROM Courses WHERE FacultyId = {facultyId}");
                 cmd.Connection = sqlConnection;
                 sqlConnection.Open();
 

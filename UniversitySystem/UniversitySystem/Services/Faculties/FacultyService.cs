@@ -14,13 +14,14 @@
         public FacultyService(IConfiguration configuration)
             => this.configuration = configuration;
 
-        public ICollection<FacultyServiceModel> GetAll()
+        public ICollection<FacultyServiceModel> GetAll(string typeCreating)
         {
             var faculties = new List<FacultyServiceModel>();
+            var query = "SELECT Id, Name FROM Faculties";
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-                SqlCommand cmd = new SqlCommand("SELECT Id, Name FROM Faculties");
+                SqlCommand cmd = new SqlCommand(query);
                 cmd.Connection = sqlConnection;
                 sqlConnection.Open();
 
@@ -31,7 +32,8 @@
                     faculties.Add(new FacultyServiceModel
                     {
                         Name = reader["Name"].ToString(),
-                        Id = Convert.ToInt32(reader["Id"])
+                        Id = Convert.ToInt32(reader["Id"]),
+                        TypeCreating = typeCreating,
                     });
                 }
             }

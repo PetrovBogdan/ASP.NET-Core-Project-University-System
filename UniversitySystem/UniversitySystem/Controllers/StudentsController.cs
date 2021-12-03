@@ -12,11 +12,11 @@
         public StudentsController(IStudentService student)
             => this.student = student;
 
-        public IActionResult Create()
+        public IActionResult Create(int facultyId)
         {
             return View(new StudentFormModel
             {
-                Courses = this.student.GetCourses()
+                Courses = this.student.GetCourses(facultyId)
             });
         }
 
@@ -34,7 +34,7 @@
             {
                 return View(new StudentFormModel
                 {
-                    Courses = this.student.GetCourses()
+                    Courses = this.student.GetCourses(facultyId)
                 });
             }
 

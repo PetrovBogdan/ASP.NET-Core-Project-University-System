@@ -3,24 +3,35 @@
 @{
     ViewBag.Title = "Choose Faculty";
 }
+<h2 class="text-center mb-5">Choose Faculty</h2>
 
 <div class="mb-4"></div>
-<h4 class="text-center font-italic">Faculties</h4>
 <div class="container">
     <div class="row text-center">
-        <table class=" table table-bordered">
+        <table style="width:700px;" class=" ml-auto mr-auto text-center table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">
+                        <h5 class="text-center font-italic">Faculties</h5>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     @foreach (var faculty in Model)
                     {
-                        <td >
-                            <a asp-controller="Students" asp-action="Create" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
-                        </td>
+                        if (faculty.TypeCreating == "student")
+                        {
+                            <td>
+                                <a asp-controller="Students" asp-action="Create" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
+                            </td>
+                        }
+                        else if (faculty.TypeCreating == "teacher")
+                        {
+                            <td>
+                                <a asp-controller="Teachers" asp-action="Create" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
+                            </td>
+                        }
 
                     }
                 </tr>

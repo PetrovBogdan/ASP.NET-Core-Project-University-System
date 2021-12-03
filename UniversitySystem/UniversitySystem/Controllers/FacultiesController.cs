@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using UniversitySystem.Services.Faculties;
-    using UniversitySystem.Services.Faculties.Models;
 
     public class FacultiesController : Controller
     {
@@ -11,7 +10,7 @@
         public FacultiesController(IFacultyService faculties)
             => this.faculties = faculties;
 
-        public IActionResult All()
-            => View(this.faculties.GetAll());
+        public IActionResult All(string type)
+            => View(this.faculties.GetAll(type));
     }
 }

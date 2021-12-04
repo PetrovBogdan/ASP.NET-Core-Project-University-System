@@ -13,5 +13,9 @@
         public IActionResult All() 
             => View(this.statistics
                              .GetPeople());
+
+        public IActionResult StudentsWithCourses()
+            => View(this.statistics
+                            .GetStudentsWithCourses());
     }
 }

@@ -6,5 +6,7 @@
     public interface IStatisticsService
     {
         public IDictionary<string, List<PersonListingServiceModel>> GetPeople();
+
+        public ICollection<StudentCourseServiceModel> GetStudentsWithCourses();
     }
 }

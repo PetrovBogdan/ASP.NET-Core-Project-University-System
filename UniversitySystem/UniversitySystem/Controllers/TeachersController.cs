@@ -20,7 +20,8 @@
         }
 
         [HttpPost]
-        public IActionResult Create(TeacherFormModel teacher, int facultyId)
+        public IActionResult Create(TeacherFormModel teacher,
+            int facultyId)
         {
             if (teacher.TitleId == 0)
             {
@@ -44,6 +45,5 @@
             return RedirectToAction("Index", "Home");
 
         }
-
     }
 }

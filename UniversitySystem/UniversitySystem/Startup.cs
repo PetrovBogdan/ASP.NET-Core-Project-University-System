@@ -8,6 +8,7 @@ namespace UniversitySystem
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using UniversitySystem.Data;
+    using UniversitySystem.Services.Courses;
     using UniversitySystem.Services.Faculties;
     using UniversitySystem.Services.Students;
     using UniversitySystem.Services.Teachers;
@@ -43,6 +44,7 @@ namespace UniversitySystem
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IFacultyService, FacultyService>();
             services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ICourseService, CourseService>();
 
 
         }

@@ -20,6 +20,9 @@
             int facultyId,
             ICollection<int?> courses)
         {
+            var teacherIds = GetTeachersForCourse(courses);
+            string teacherIdsAsString = string.Join(",", teacherIds);
+
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
                 string coursesAsString = string.Join(',', courses);
@@ -31,9 +34,37 @@
                 cmd.Parameters.AddWithValue("LastName", lastName);
                 cmd.Parameters.AddWithValue("FacultyId", facultyId);
                 cmd.Parameters.AddWithValue("Courses", coursesAsString);
+                cmd.Parameters.AddWithValue("TeachersIds", teacherIdsAsString);
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        private ICollection<int> GetTeachersForCourse(ICollection<int?> courses)
+        {
+            var teacherIds = new HashSet<int>();
+
+            foreach (var courseId in courses)
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
+                {
+
+                    var query = $"SELECT t.Id FROM Teachers AS t JOIN TeacherCourses AS tc ON t.Id = tc.TeacherId JOIN Courses AS c ON c.Id = tc.CourseId WHERE c.Id = {courseId}";
+
+                    SqlCommand cmd = new SqlCommand(query);
+                    cmd.Connection = sqlConnection;
+                    sqlConnection.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        teacherIds.Add(Convert.ToInt32(reader["Id"]));
+                    }
+
+                }
+            }
+            return teacherIds;
         }
 
         public ICollection<CourseServiceModel> GetCourses(int facultyId)

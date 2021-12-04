@@ -7,6 +7,6 @@
     {
         public ICollection<TitleServiceModel> Titles { get; set; }
 
-        public ICollection<int?> TitleId { get; set; }
+        public int TitleId { get; set; }
     }
 }

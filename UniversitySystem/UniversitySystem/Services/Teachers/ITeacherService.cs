@@ -5,7 +5,10 @@
 
     public interface ITeacherService
     {
-        public void Create();
+        public void Create(string firstName,
+            string lastName,
+            int facultyId,
+            int titleId);
 
         public ICollection<TitleServiceModel> GetTitles();
 

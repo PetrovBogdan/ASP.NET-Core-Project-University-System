@@ -21,6 +21,29 @@
 
         [HttpPost]
         public IActionResult Create(TeacherFormModel teacher, int facultyId)
-            => View();
+        {
+            if (teacher.TitleId == 0)
+            {
+                this.ModelState.AddModelError(nameof(teacher.Titles),
+                    "You must select title !");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return View(new TeacherFormModel
+                {
+                    Titles = this.teacher.GetTitles()
+                });
+            }
+
+            this.teacher.Create(teacher.FirstName,
+                teacher.LastName,
+                facultyId,
+                teacher.TitleId);
+
+            return RedirectToAction("Index", "Home");
+
+        }
+
     }
 }

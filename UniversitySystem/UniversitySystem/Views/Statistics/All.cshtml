@@ -1,0 +1,69 @@
+﻿@model Dictionary<string, List<PersonListingServiceModel>>
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<div class="list-group text-center">
+    <button type="button" class="list-group-item list-group-item-action">Teachers</button>
+    <button type="button" class="list-group-item list-group-item-action">Students</button>
+</div>
+
+<h4 class="text-center font-italic mt-5 mb-4">List of teachers and students</h4>
+<div class="container">
+    <div class="row text-center">
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Teacher Name</th>
+                    <th scope="col">Courses Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kvp in Model)
+                {
+                    if (kvp.Key == "teachers")
+                    {
+                        foreach (var teacher in kvp.Value)
+                        {
+                            <tr>
+                                <td>@teacher.FullName</td>
+                                <td>@teacher.GetStatistics()</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Course Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var kvp in Model)
+                {
+                    if (kvp.Key == "students")
+                    {
+                        foreach (var student in kvp.Value)
+                        {
+                            <tr>
+                                <td>@student.FullName</td>
+                                <td>@student.GetStatistics()</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

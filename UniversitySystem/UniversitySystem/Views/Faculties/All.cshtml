@@ -38,6 +38,12 @@
                                 <a asp-controller="Courses" asp-action="Create" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
                             </td>
                         }
+                        else if (faculty.TypeCreating == "statistics")
+                        {
+                            <td>
+                                <a asp-controller="Statistics" asp-action="All" asp-route-facultyId="@faculty.Id">@faculty.Name</a>
+                            </td>
+                        }
 
                     }
                 </tr>

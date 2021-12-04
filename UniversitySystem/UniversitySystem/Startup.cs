@@ -10,6 +10,7 @@ namespace UniversitySystem
     using UniversitySystem.Data;
     using UniversitySystem.Services.Courses;
     using UniversitySystem.Services.Faculties;
+    using UniversitySystem.Services.Statistics;
     using UniversitySystem.Services.Students;
     using UniversitySystem.Services.Teachers;
 
@@ -45,6 +46,8 @@ namespace UniversitySystem
             services.AddTransient<IFacultyService, FacultyService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
+
 
 
         }

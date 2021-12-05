@@ -126,9 +126,9 @@
             return teachers;
         }
 
-        public ICollection<CourseServiceModel> GetTopCourses()
+        public ICollection<CourseStatisticsServiceModel> GetTopCourses()
         {
-            var courses = new List<CourseServiceModel>();
+            var courses = new List<CourseStatisticsServiceModel>();
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
@@ -144,7 +144,7 @@
                 while (reader.Read())
                 {
 
-                    courses.Add(new CourseServiceModel
+                    courses.Add(new CourseStatisticsServiceModel
                     {
                         Name = reader["Course"].ToString(),
                         TotalStudents = Convert.ToInt32(reader["Total Students"]),

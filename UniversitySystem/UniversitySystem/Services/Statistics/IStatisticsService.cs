@@ -13,7 +13,7 @@
 
         public ICollection<TeacherCourseStudentsServiceModel> GetTeachersWithCoursesAndStudents();
 
-        public ICollection<CourseServiceModel> GetTopCourses();
+        public ICollection<CourseStatisticsServiceModel> GetTopCourses();
 
         public ICollection<TeacherServiceModel> GetTopTeachers();
     }

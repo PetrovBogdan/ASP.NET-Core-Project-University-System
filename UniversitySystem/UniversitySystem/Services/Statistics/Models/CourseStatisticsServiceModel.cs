@@ -1,6 +1,6 @@
 ﻿namespace UniversitySystem.Services.Statistics.Models
 {
-    public class CourseServiceModel
+    public class CourseStatisticsServiceModel
     {
         public string Name { get; set; }
 

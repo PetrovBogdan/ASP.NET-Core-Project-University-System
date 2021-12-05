@@ -1,7 +1,6 @@
 ﻿namespace UniversitySystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
     using UniversitySystem.Models;
     using UniversitySystem.Services.Students;
 
@@ -44,6 +43,34 @@
                 student.CourseId);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Details(int id)
+            => View(this.student
+                            .GetDetails(id));
+
+        [HttpPost]
+        public IActionResult AddCourse(string courseStudentIds)
+        {
+            var splittedIds = courseStudentIds.Split(",");
+            var courseId = int.Parse(splittedIds[0]);
+            var studentId = int.Parse(splittedIds[1]);
+
+            this.student.AddCourse(courseId, studentId);
+
+            return RedirectToAction(nameof(Details), new { id = studentId });
+        }
+
+        [HttpPost]
+        public IActionResult RemoveCourse(string courseStudentIds)
+        {
+            var splittedIds = courseStudentIds.Split(",");
+            var courseId = int.Parse(splittedIds[0]);
+            var studentId = int.Parse(splittedIds[1]);
+
+            this.student.RemoveCourse(courseId, studentId);
+
+            return RedirectToAction(nameof(Details), new { id = studentId });
         }
     }
 }

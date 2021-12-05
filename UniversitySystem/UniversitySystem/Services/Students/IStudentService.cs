@@ -12,5 +12,11 @@
 
         public ICollection<CourseServiceModel> GetCourses(int facultyId);
 
+        public StudentDetailsServiceModel GetDetails(int studentId);
+
+        public void AddCourse(int courseId, int studentId);
+
+        public void RemoveCourse(int courseId, int studentId);
+
     }
 }

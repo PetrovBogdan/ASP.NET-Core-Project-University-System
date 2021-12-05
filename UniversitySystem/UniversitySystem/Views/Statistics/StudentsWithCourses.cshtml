@@ -19,11 +19,17 @@
                 @foreach (var student in Model)
                 {
                     <tr>
-                        <td>@student.FullName</td>
-                        <td>@string.Join(", ", student.Courses)</td>
-                    </tr>
+                        <td>
+                            <a asp-action="Details"
+                               asp-controller="Students"
+                               asp-route-id="@student.Id">
+                                @student.FullName
+                        </a>
+                    </td>
+                    <td>@string.Join(", ", student.Courses)</td>
+                </tr>
 
-                }
+            }
             </tbody>
         </table>
     </div>

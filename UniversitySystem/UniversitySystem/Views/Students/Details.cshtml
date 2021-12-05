@@ -1,0 +1,72 @@
+﻿@model StudentDetailsServiceModel
+
+@{
+    ViewBag.Title = "Student details";
+}
+<div class="ml-5">
+    <div class="ml-5">
+        <div class="row ml-5">
+            <div class="card mr-5 ml-5" style="width: 18rem; display:inline-block">
+                <img class="card-img-top" src="~/Images/binaryBackground.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 asp-route-studentId="@Model.Id" class="card-title">@(Model.FirstName + " " + Model.LastName)</h5>
+                    <p class="card-text">Courses:</p>
+                    @foreach (var course in Model.Courses)
+                    {
+                        <form method="post">
+                            <p class="card-text text-center">
+                                @course.Name
+                                <button asp-controller="Students"
+                                        asp-action="RemoveCourse"
+                                        asp-route-courseStudentIds="@(course.Id.ToString() +"," + Model.Id.ToString())"
+                                        style="width:230px"
+                                        type="submit"
+                                        class="btn btn-danger">
+                                    Quit course
+                                </button>
+                            </p>
+                        </form>
+                    }
+                    <a id="add-course" class="btn btn-primary text-white text-center">Start new course</a>
+                </div>
+            </div>
+
+            <div id="active-courses" class="card ml-5 mr-5" style="width: 18rem; display: none">
+                <img class="card-img-top" src="~/Images/activeCoursesBackground.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Active courses</h5>
+                    @foreach (var course in Model.ActiveCourses)
+                    {
+                        <form method="post">
+                            <p class="card-text">
+                                @course.Name
+                                <button asp-controller="Students"
+                                        asp-action="AddCourse"
+                                        asp-route-courseStudentIds="@(course.Id.ToString() +"," + Model.Id.ToString())"
+                                        style="width:230px"
+                                        type="submit"
+                                        class="btn btn-success">
+                                    Join course
+                                </button>
+                            </p>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script>
+        let addCourseButtonElement = document.getElementById("add-course");
+        let activeCoursesCardElement = document.getElementById("active-courses");
+
+        addCourseButtonElement.addEventListener("click", () => {
+            addCourseButtonElement.style.display = "none";
+            activeCoursesCardElement.style.display = "inline-block";
+        });
+    </script>
+}

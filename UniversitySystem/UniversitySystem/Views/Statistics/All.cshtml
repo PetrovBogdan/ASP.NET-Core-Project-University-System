@@ -63,12 +63,12 @@
 <form method="get">
     <div class="container text-center mt-3">
         <button asp-controller="Statistics" asp-action="StudentsWithCourses" type="submit" class="btn btn-outline-info">Show students with active courses</button>
-        <button type="submit" class="btn btn-outline-info">Show students with total credits</button>
-        <button type="submit" class="btn btn-outline-info">Show teachers with courses and students count</button>
-        <button type="submit" class="btn btn-outline-info">Top three courses</button>
+        <button asp-controller="Statistics" asp-action="StudentsWithCredits" type="submit" class="btn btn-outline-info">Show students with total credits</button>
+        <button asp-controller="Statistics" asp-action="TeachersWithCoursesAndStudents" type="submit" class="btn btn-outline-info">Show teachers with courses and students count</button>
+        <button asp-controller="Statistics" asp-action="TopCourses" type="submit" class="btn btn-outline-info">Top three courses</button>
     </div>
     <div class="container text-center mt-2">
-        <button type="submit" class="btn btn-outline-info">Top three teachers</button>
+        <button asp-controller="Statistics" asp-action="TopTeachers" type="submit" class="btn btn-outline-info">Top three teachers</button>
     </div>
 </form>
 

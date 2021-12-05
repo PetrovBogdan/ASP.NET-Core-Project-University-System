@@ -65,6 +65,127 @@
             return students;
         }
 
+        public ICollection<StudentCreditsServiceModel> GetStudentsWithCredits()
+        {
+            var students = new List<StudentCreditsServiceModel>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
+            {
+
+                var query = $"SELECT * FROM StudentsWithCredits";
+
+                SqlCommand cmd = new SqlCommand(query);
+                cmd.Connection = sqlConnection;
+                sqlConnection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    students.Add(new StudentCreditsServiceModel
+                    {
+                        FullName = reader["Full Name"].ToString(),
+                        Credits = Convert.ToInt32(reader["Total Credits"]),
+                    });
+                }
+
+            }
+
+            return students;
+        }
+
+        public ICollection<TeacherCourseStudentsServiceModel> GetTeachersWithCoursesAndStudents()
+        {
+            var teachers = new List<TeacherCourseStudentsServiceModel>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
+            {
+
+                var query = $"SELECT * FROM TeachersWithCoursesAndStudentsCount";
+
+                SqlCommand cmd = new SqlCommand(query);
+                cmd.Connection = sqlConnection;
+                sqlConnection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    teachers.Add(new TeacherCourseStudentsServiceModel
+                    {
+                        TeacherFullName = reader["Teacher Full Name"].ToString(),
+                        Course = reader["Course"].ToString(),
+                        StudentsCount = Convert.ToInt32(reader["Students Count"]),
+                    });
+                }
+
+            }
+
+            return teachers;
+        }
+
+        public ICollection<CourseServiceModel> GetTopCourses()
+        {
+            var courses = new List<CourseServiceModel>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
+            {
+
+                var query = $"SELECT * FROM TopThreeCourses";
+
+                SqlCommand cmd = new SqlCommand(query);
+                cmd.Connection = sqlConnection;
+                sqlConnection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    courses.Add(new CourseServiceModel
+                    {
+                        Name = reader["Course"].ToString(),
+                        TotalStudents = Convert.ToInt32(reader["Total Students"]),
+                    });
+                }
+
+            }
+
+            return courses;
+        }
+
+        public ICollection<TeacherServiceModel> GetTopTeachers()
+        {
+            var teachers = new List<TeacherServiceModel>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
+            {
+
+                var query = $"SELECT * FROM TopThreeTeachers";
+
+                SqlCommand cmd = new SqlCommand(query);
+                cmd.Connection = sqlConnection;
+                sqlConnection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    teachers.Add(new TeacherServiceModel
+                    {
+                        FullName = reader["Full Name"].ToString(),
+                        TotalStudents = Convert.ToInt32(reader["Total Students"]),
+                    });
+                }
+
+            }
+
+            return teachers;
+        }
+
         private void GetStudents(Dictionary<string, List<PersonListingServiceModel>> people)
         {
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))

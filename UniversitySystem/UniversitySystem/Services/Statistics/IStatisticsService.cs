@@ -8,5 +8,13 @@
         public IDictionary<string, List<PersonListingServiceModel>> GetPeople();
 
         public ICollection<StudentCourseServiceModel> GetStudentsWithCourses();
+
+        public ICollection<StudentCreditsServiceModel> GetStudentsWithCredits();
+
+        public ICollection<TeacherCourseStudentsServiceModel> GetTeachersWithCoursesAndStudents();
+
+        public ICollection<CourseServiceModel> GetTopCourses();
+
+        public ICollection<TeacherServiceModel> GetTopTeachers();
     }
 }

@@ -1,0 +1,30 @@
+﻿@model List<StudentCreditsServiceModel>
+
+@{
+    ViewBag.Title = "Students with credits";
+}
+
+<h4 class="text-center font-italic mt-5 mb-4">Students with credits</h4>
+
+<div class="container">
+    <div class="row text-center">
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <th width=500px scope="col">Student Name</th>
+                    <th width=500px scope="col">Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.FullName</td>
+                        <td>@student.Credits</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

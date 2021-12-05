@@ -1,0 +1,30 @@
+﻿@model List<CourseServiceModel>
+
+@{
+    ViewBag.Title = "Top three courses";
+}
+
+<h4 class="text-center font-italic mt-5 mb-4">Top three courses</h4>
+
+<div class="container">
+    <div class="row text-center">
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <th width=500px scope="col">Course</th>
+                    <th width=500px scope="col">Total students</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <td>@course.Name</td>
+                        <td>@course.TotalStudents</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

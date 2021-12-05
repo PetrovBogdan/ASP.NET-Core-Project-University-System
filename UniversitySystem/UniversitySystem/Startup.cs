@@ -2,11 +2,10 @@ namespace UniversitySystem
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
     using UniversitySystem.Data;
     using UniversitySystem.Services.Courses;
     using UniversitySystem.Services.Faculties;
@@ -30,16 +29,7 @@ namespace UniversitySystem
             services
                 .AddDatabaseDeveloperPageExceptionFilter();
 
-            services
-                .AddDefaultIdentity<IdentityUser>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages();
             services.AddControllersWithViews();
 
             services.AddTransient<IStudentService, StudentService>();
@@ -47,9 +37,6 @@ namespace UniversitySystem
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ICourseService, CourseService>();
             services.AddTransient<IStatisticsService, StatisticsService>();
-
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,8 +1,9 @@
 ﻿namespace UniversitySystem.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using System.Linq;
+
     using UniversitySystem.Models;
+    using Microsoft.AspNetCore.Mvc;
     using UniversitySystem.Services.Courses;
 
     public class CoursesController : Controller

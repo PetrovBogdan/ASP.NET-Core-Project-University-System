@@ -42,7 +42,7 @@
                 facultyId,
                 teacher.TitleId);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Statistics");
 
         }
     }

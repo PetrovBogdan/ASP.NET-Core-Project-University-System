@@ -1,12 +1,14 @@
 ﻿namespace UniversitySystem.Services.Faculties
 {
-    using Microsoft.Data.SqlClient;
-    using Microsoft.Extensions.Configuration;
     using System;
     using System.Collections.Generic;
+
+    using Microsoft.Data.SqlClient;
+    using Microsoft.Extensions.Configuration;
     using UniversitySystem.Services.Faculties.Models;
 
     using static WebConstants;
+
     public class FacultyService : IFacultyService
     {
         private readonly IConfiguration configuration;

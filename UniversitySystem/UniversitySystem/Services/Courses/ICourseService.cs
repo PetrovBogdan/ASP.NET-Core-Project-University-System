@@ -1,8 +1,8 @@
 ﻿namespace UniversitySystem.Services.Courses
 {
     using System.Collections.Generic;
+
     using UniversitySystem.Services.Courses.Models;
-    using UniversitySystem.Services.Students.Models;
 
     public interface ICourseService
     {

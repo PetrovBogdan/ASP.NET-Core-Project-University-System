@@ -42,7 +42,7 @@
                 facultyId,
                 student.CourseId);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Statistics");
         }
 
         public IActionResult Details(int id)

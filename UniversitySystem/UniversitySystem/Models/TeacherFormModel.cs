@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using UniversitySystem.Services.Teachers.Models;
 
     public class TeacherFormModel : PersonFormModel

@@ -1,6 +1,7 @@
 ﻿namespace UniversitySystem.Services.Teachers
 {
     using System.Collections.Generic;
+
     using UniversitySystem.Services.Teachers.Models;
 
     public interface ITeacherService

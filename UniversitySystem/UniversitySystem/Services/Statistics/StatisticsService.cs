@@ -1,13 +1,15 @@
 ﻿namespace UniversitySystem.Services.Statistics
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
     using Microsoft.Data.SqlClient;
     using Microsoft.Extensions.Configuration;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using UniversitySystem.Services.Statistics.Models;
 
     using static WebConstants;
+
     public class StatisticsService : IStatisticsService
     {
         private readonly IConfiguration configuration;
@@ -18,6 +20,7 @@
         public IDictionary<string, List<PersonListingServiceModel>> GetPeople()
         {
             var people = new Dictionary<string, List<PersonListingServiceModel>>();
+           
             GetTeachers(people);
             GetStudents(people);
 
@@ -71,7 +74,6 @@
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-
                 var query = $"SELECT * FROM StudentsWithCredits";
 
                 SqlCommand cmd = new SqlCommand(query);
@@ -101,7 +103,6 @@
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-
                 var query = $"SELECT * FROM TeachersWithCoursesAndStudentsCount";
 
                 SqlCommand cmd = new SqlCommand(query);
@@ -132,7 +133,6 @@
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-
                 var query = $"SELECT * FROM TopThreeCourses";
 
                 SqlCommand cmd = new SqlCommand(query);
@@ -162,7 +162,6 @@
 
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-
                 var query = $"SELECT * FROM TopThreeTeachers";
 
                 SqlCommand cmd = new SqlCommand(query);
@@ -220,7 +219,6 @@
         {
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-
                 var query = $"SELECT * FROM TeachersWithCoursesCount ORDER BY [Full Name]";
 
                 SqlCommand cmd = new SqlCommand(query);

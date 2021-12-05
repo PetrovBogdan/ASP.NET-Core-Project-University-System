@@ -19,7 +19,12 @@
                                 <button asp-controller="Students"
                                         asp-action="RemoveCourse"
                                         asp-route-courseStudentIds="@(course.Id.ToString() +"," + Model.Id.ToString())"
-                                        style="width:230px"
+                                        style="width:230px;display:none"
+                                        type="submit"
+                                        class="btn btn-success">
+                                    Click to confirm
+                                </button>
+                                <button style="width:230px"
                                         type="submit"
                                         class="btn btn-danger">
                                     Quit course
@@ -45,7 +50,7 @@
                                         asp-route-courseStudentIds="@(course.Id.ToString() +"," + Model.Id.ToString())"
                                         style="width:230px"
                                         type="submit"
-                                        class="btn btn-success">
+                                        class="btn btn-info">
                                     Join course
                                 </button>
                             </p>
@@ -57,16 +62,27 @@
     </div>
 </div>
 
-
-
 @section Scripts{
     <script>
+
         let addCourseButtonElement = document.getElementById("add-course");
         let activeCoursesCardElement = document.getElementById("active-courses");
+
+        let removeCourseButtonElements = document.getElementsByClassName("btn-danger");
 
         addCourseButtonElement.addEventListener("click", () => {
             addCourseButtonElement.style.display = "none";
             activeCoursesCardElement.style.display = "inline-block";
+        });
+
+
+        Array.from(removeCourseButtonElements).forEach(button => {
+
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                button.style.display = "none";
+                e.target.parentNode.children[0].style.display = "block";
+            });
         });
     </script>
 }

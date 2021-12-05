@@ -22,6 +22,7 @@
                 <div class="form-group">
                     <label id="TitleId">Chosse title:</label>
                     <select id="TitleId" name="TitleId" class="form-control">
+                        <option>- Select -</option>
                         @foreach (var title in Model.Titles)
                         {
                             <option value="@title.Id">@title.Name</option>

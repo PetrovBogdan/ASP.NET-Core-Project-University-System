@@ -1,14 +1,14 @@
 ﻿namespace UniversitySystem.Services.Teachers
 {
     using System;
+    using System.Data;
+    using System.Collections.Generic;
 
     using Microsoft.Data.SqlClient;
     using Microsoft.Extensions.Configuration;
-    using System.Collections.Generic;
     using UniversitySystem.Services.Teachers.Models;
 
     using static WebConstants;
-    using System.Data;
 
     public class TeacherService : ITeacherService
     {

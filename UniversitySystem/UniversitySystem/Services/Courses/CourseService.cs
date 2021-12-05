@@ -1,10 +1,11 @@
 ﻿namespace UniversitySystem.Services.Courses
 {
+    using System;
+    using System.Data;
+    using System.Collections.Generic;
+
     using Microsoft.Data.SqlClient;
     using Microsoft.Extensions.Configuration;
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
     using UniversitySystem.Services.Courses.Models;
 
     using static WebConstants;
@@ -23,7 +24,7 @@
         {
             using (SqlConnection sqlConnection = new SqlConnection(this.configuration.GetConnectionString(ConnectionString)))
             {
-                string teachersAsString = string.Join(',', teachers);
+                var teachersAsString = string.Join(',', teachers);
 
                 sqlConnection.Open();
                 SqlCommand cmd = new SqlCommand("AddNewCourse", sqlConnection);

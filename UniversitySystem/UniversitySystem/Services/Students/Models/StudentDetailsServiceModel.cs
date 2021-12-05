@@ -1,6 +1,7 @@
 ﻿namespace UniversitySystem.Services.Students.Models
 {
     using System.Collections.Generic;
+
     public class StudentDetailsServiceModel
     {
         public int Id { get; set; }

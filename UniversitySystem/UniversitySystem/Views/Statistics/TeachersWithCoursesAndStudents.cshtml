@@ -19,11 +19,11 @@
             <tbody>
                 @foreach (var teacher in Model)
                 {
-                <tr>
-                    <td>@teacher.TeacherFullName</td>
-                    <td>@teacher.Course</td>
-                    <td>@teacher.StudentsCount</td>
-                </tr>
+                    <tr>
+                        <td>@teacher.TeacherFullName</td>
+                        <td>@(teacher.Course == "" ? "No active courses": teacher.Course) </td>
+                        <td>@teacher.StudentsCount</td>
+                    </tr>
 
                 }
             </tbody>
